@@ -8,9 +8,11 @@ warning off %#ok<WNOFF>
 syms v2 v1 ax ay R
 if direction
     ax_max=tire.ac_max;
+    %i=1;
 else
     ax_max=tire.br_max;
-    car.lift=-car.lift;
+    car.drag=-car.drag;
+    %i=2;
 end
 
 assume(car.motor_speed>=v2>=0)
@@ -21,11 +23,11 @@ assume(R>0)
 
 f0(ax)=tire.ay_max*(1-ax^2/ax_max^2)^0.5;
 
-lateral(ax,v2,R)=f0(ax)*R*(1+car.rho*car.area*car.lift*v2^2/2/car.mass)-v2^2;
+lateral(ax,v2,R)=f0(ax)*R*(32.174+car.rho*car.area*car.lift*v2^2/2/car.mass)-v2^2;
 vf2_eqn(ax,v1,R)=solve(lateral==0,v2);
 
 
-longitudinal(ax,v2,v1,R)=v1^2+2*track.dx*ax+track.dx*ax*car.rho*car.area*(car.lift-car.drag/ax)*v2^2/car.mass-v2^2;
+longitudinal(ax,v2,v1,R)=v1^2+2*track.dx*ax*32.174+track.dx*ax*car.rho*car.area*(car.lift-car.drag/ax)*v2^2/car.mass-v2^2;
 vf_eqn(ax,v1,R)=solve(longitudinal==0,v2);
 
 
