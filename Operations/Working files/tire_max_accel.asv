@@ -34,17 +34,15 @@ for i=1:size(track.results.d_peaks,1)
     end
     
 end
-clear i j position step acceleration v_initial vf v_max
+clear i j position step acceleration v_initial vf
 
 
 
 % repeat acceleration profile for braking condition
 [brake_eqn,vf_eqn]=f_get_equation(track,car,tire,0);
 
-% reinitialize v_max at max speed
-v_max(1:size(track.results.v_profile,1),1)=car.motor_speed;
-
-for i=size(track.results.d_peaks,1):-1:1
+for i=size(track.results.d_peaks,1):1
+    
     position=round(track.results.d_peaks(i,1)/track.dx);
     step=0;
     v_max(position,1)=track.results.v_peaks(i);

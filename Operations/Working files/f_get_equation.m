@@ -10,6 +10,7 @@ if direction
     ax_max=tire.ac_max;
 else
     ax_max=tire.br_max;
+    car.lift=-car.lift;
 end
 
 assume(car.motor_speed>=v2>=0)
