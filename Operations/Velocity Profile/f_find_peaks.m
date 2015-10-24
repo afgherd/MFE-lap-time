@@ -19,4 +19,4 @@ for i=2:size(track.r,1)
     end
 end
 hold on
-plot(track.results.d_peaks(:,1)/track.dx,track.results.v_peaks,'.')
+%plot(track.results.d_peaks(:,1)/track.dx,track.results.v_peaks,'.')
