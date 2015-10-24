@@ -17,8 +17,8 @@ for i=1:size(track.results.d_peaks,1)
         
         % find max acceleration allowed by motor
         [force,rpm]=f_motor_map(v_initial);
-        track.results.accel_motor(position+step,1)=force/car.mass;
-        track.results.rpm(position+step,1)=rpm;
+        track.results.accel_motorc)=force/car.mass;
+        track.results.rpm=rpm;
         % find max acceleration allowed by tire
         accel_traction=accel_eqn(abs(track.r(position+step+1)),v_initial);
         if isreal(accel_traction)
