@@ -22,7 +22,9 @@ for i=1:size(track.results.d_peaks,1)
         % find max acceleration allowed by tire
         accel_traction=accel_eqn(abs(track.r(position+step+1)),v_initial);
         if isreal(accel_traction)
-            track.results.accel_tire(position+step,1)=accel_traction;
+            % RESULT DIVIDED BY 2
+            track.results.accel_tire(position+step,1)=accel_traction/2; % DIVIDED BY 2 BECAUSE REAR WHEEL DRIVE (ASSUMING 50/50 WEIGHT DISTRIBUTION)
+            % RESULT DIVIDED BY 2
         else
             break
         end

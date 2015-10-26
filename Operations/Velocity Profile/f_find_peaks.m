@@ -1,5 +1,7 @@
 function [ track ] = f_find_peaks( track )
-
+% for each point compare its velocity to that of the previous
+% and next point. If both adjacent points have larger velocity
+% that point is a minimum
 count=1;
 
 %check if first point is a peak

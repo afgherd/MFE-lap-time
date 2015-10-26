@@ -21,6 +21,10 @@ for i=size(track.results.d_peaks,1):-1:1
         
         vf=vf_eqn(accel_tire(position+step,1),v_max(position+step,1),abs(track.r(position+step-1)));
         v_max(position+step-1,1)=vf(vf>0);
+        
+        % calculate motor rpm (for output data, not required for computations)
+        [~,track.results.rpm(position+step,1)]=f_motor_map(v_initial);
+        
         step=step-1;
     end
     
